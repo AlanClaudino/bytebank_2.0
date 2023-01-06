@@ -7,25 +7,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Console = Colorful.Console;
 
-namespace ByteBank_2._0
+namespace ByteBank_2._0.Models
 {
-    internal class Users
+    internal class Clients
     {
         public string Nome { get; set; }
-        public string Cpf { get; set;}
+        public string Cpf { get; set; }
         public int Senha { get; set; }
+        public string NumeroConta { get; set; }
         public decimal Saldo { get; set; }
-        public Users() { }
+        public Clients() { }
 
-        public Users(string aNome, string aCpf, int aSenha)
+        public Clients(string aNome, string aCpf, int aSenha, string ultimaConta = "1000-000")
         {
             Nome = aNome;
             Cpf = aCpf;
             Senha = aSenha;
             Saldo = 0.00m;
+            NumeroConta = $"1000-{(int.Parse(ultimaConta[6..]) + 1).ToString().PadLeft(3, '0')}";
         }
 
-        public void Depositar(decimal aDeposito) {
+        public void Depositar(decimal aDeposito)
+        {
             Saldo += aDeposito;
         }
 
@@ -39,20 +42,5 @@ namespace ByteBank_2._0
             Console.Write($"  Saldo disponivel: ", Color.LightSeaGreen);
             Console.WriteLine($"R$ {Saldo}");
         }
-    }
-
-    internal class Admin
-    {
-        public string Nome { get; set; }
-        public string NomeDeUsuario { get; set; }
-        public int Senha { get; set; }
-        public Admin() { }
-        public Admin(string aNome, string aNomeDeUsuario, int aSenha) 
-        {
-            Nome = aNome;
-            NomeDeUsuario= aNomeDeUsuario;
-            Senha = aSenha;
-        }
-
     }
 }

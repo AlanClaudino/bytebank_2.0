@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a9yMNQg+OL9Hs6dhL6F3AHFPqUljTYITCLTvgqSoNlYd1Pm7vtQxcoiM+QlP30J8WXwJQByEWiME7ijvU4LPzQ==",
+  "dgSpecHash": "K7iPLMNTzsAS88yihMquWBPOnlx4s6HYe8JYgZqirwGRR5ui+4Sm96nqr46KjuvoKwaHGZIpPECXstVy1OaNmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alanr\\Desktop\\Alan\\Projects\\Computer Science\\ByteBank\\ByteBank_2.0\\ByteBank_2.0\\ByteBank_2.0.csproj",
+  "projectFilePath": "C:\\Users\\alanr\\Desktop\\Alan\\Projects\\Computer Science\\Ima LP\\ByteBank\\ByteBank_2.0\\ByteBank_2.0\\ByteBank_2.0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alanr\\.nuget\\packages\\colorful.console\\1.2.15\\colorful.console.1.2.15.nupkg.sha512",
     "C:\\Users\\alanr\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",

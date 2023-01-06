@@ -10,18 +10,18 @@ namespace ByteBank_2._0.Functions
 {
     internal class Utilidades
     {
-        static public void MensagemNovaConta(string Nome)
+        static public void MensagemNovaConta(string Nome, string conta)
         {
             Console.WriteLine();
-            Console.WriteLine($"  Parabens {Nome}! A sua conta foi criada com sucesso.");
+            Console.WriteLine($"  Parabens {Nome}! A sua conta Nº {conta} foi criada com sucesso.");
             Console.Write("  Pressione Enter para retornar ao Menu inicial. ");
             Console.ReadLine();
         }
 
-        static public void MensagemContaExistente()
+        static public void MensagemContaExistente(string nome)
         {
             Console.WriteLine();
-            Console.WriteLine("  Você já possui uma conta cadastrada.");
+            Console.WriteLine($"  {nome}, você já possui uma conta cadastrada.");
             Console.Write("  Pressione Enter para retornar ao Menu Inicial. ");
             Console.ReadLine();
         }
@@ -51,7 +51,7 @@ namespace ByteBank_2._0.Functions
             Console.WriteLine($"Retorne ao {NomeMenu}");
             System.Console.WriteLine();
             Console.Write("  Digite a opção selecionada: ");
-            return InputCheckers.ValidarSelecao("1", "2");
+            return InputValidation.ValidarSelecao("1", "2");
         }
 
         static public string MensagemRetornarMenu(string NomeMenu)
@@ -63,7 +63,7 @@ namespace ByteBank_2._0.Functions
             Console.WriteLine("Encerrar atendimento");
             System.Console.WriteLine();
             Console.Write("  Digite a opção selecionada: ");
-            return InputCheckers.ValidarSelecao("1", "2");
+            return InputValidation.ValidarSelecao("1", "2");
         }
 
     }

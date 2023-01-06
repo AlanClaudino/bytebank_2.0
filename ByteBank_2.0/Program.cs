@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ByteBank_2._0.Functions;
+using ByteBank_2._0.Models;
 using Console = Colorful.Console;
 
 namespace ByteBank_2._0
@@ -9,34 +10,34 @@ namespace ByteBank_2._0
         static void Main(string[] args)
         {
             Console.ForegroundColor = Color.PaleGoldenrod;
-            List<Users> Clientes = InputOutput.GetClientsDB();
-            Admin Admin = new Admin("Alan", "admin", 9999);
+            List<Clients> clientes = InputOutput.GetClientsDB();
+            Admin admin = new Admin("Alan", "admin", 9999);
 
-            bool EncerrarPrograma = false;
+            bool encerrarPrograma = false;
 
-            while (EncerrarPrograma != true)
+            while (encerrarPrograma != true)
             {
                 MenuInterfaces.MenuInicial();
-                string MenuInicial = InputCheckers.ValidarSelecao("1", "2", "3", "4");
+                string menuInicial = InputValidation.ValidarSelecao("1", "2", "3", "4");
 
-                switch (MenuInicial)
+                switch (menuInicial)
                 {
                     case "1":
-                        InteractiveInterfaces.NovoCliente(Clientes);
+                        InteractiveInterfaces.NovoCliente(clientes);
                         break;
                     case "2":
-                        ClientOptions.AcessoConta(Clientes);
+                        ClientOptions.AcessoConta(clientes);
                         break;
                     case "3":
-                        AdminOptions.AcessoAdm(Clientes, Admin);
+                        AdminOptions.AcessoAdm(clientes, admin);
                         break;
                     case "4":
-                        EncerrarPrograma = true;
+                        encerrarPrograma = true;
                         break;
                 }
             }
 
-            InputOutput.SalvarUsuariosDB(Clientes);
+            InputOutput.SalvarUsuariosDB(clientes);
 
 
         }

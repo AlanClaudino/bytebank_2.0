@@ -1,4 +1,5 @@
 ﻿using ByteBank_2._0.Functions;
+using ByteBank_2._0.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,32 +11,35 @@ namespace ByteBank_2._0
 {
     internal class ClientOptions
     {
-        static public void AcessoConta(List<Users> Clientes)
+        static public void AcessoConta(List<Clients> clientes)
         {
             bool loggedIn = false;
-            int index = InteractiveInterfaces.Acesso(Clientes);
+            int index = InteractiveInterfaces.Acesso(clientes);
 
             if (index >= 0) { loggedIn = true; }
 
             while (loggedIn == true)
             {
 
-                string opcao = MenuInterfaces.MenuOperacoes(Clientes[index].Nome);
+                string opcao = MenuInterfaces.MenuOperacoes(clientes[index].Nome);
                 switch (opcao)
                 {
                     case "1":
-                        loggedIn = MenuInterfaces.MenuSaldo(Clientes[index]);
+                        loggedIn = MenuInterfaces.MenuSaldo(clientes[index]);
                         break;
                     case "2":
-                        loggedIn = InteractiveInterfaces.MenuDeposito(Clientes[index]);
+                        loggedIn = InteractiveInterfaces.MenuDeposito(clientes[index]);
                         break;
                     case "3":
-                        loggedIn = InteractiveInterfaces.MenuSaque(Clientes[index]);
+                        loggedIn = InteractiveInterfaces.MenuSaque(clientes[index]);
                         break;
                     case "4":
-                        loggedIn = InteractiveInterfaces.ExclusaoDeConta(Clientes, index);
+                        loggedIn = InteractiveInterfaces.MenuTransferencia(clientes[index], clientes);
                         break;
                     case "5":
+                        loggedIn = InteractiveInterfaces.ExclusaoDeConta(clientes, index);
+                        break;
+                    case "6":
                         loggedIn = false;
                         break;
 

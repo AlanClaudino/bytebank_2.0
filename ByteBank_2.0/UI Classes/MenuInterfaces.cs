@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console = Colorful.Console;
+using ByteBank_2._0.Models;
 
 namespace ByteBank_2._0
 {
@@ -28,7 +29,7 @@ namespace ByteBank_2._0
             Console.Write("  [2] ", Color.LightSeaGreen);
             Console.WriteLine("Acessar conta");
             Console.Write("  [3] ", Color.LightSeaGreen);
-            Console.WriteLine("Acessar como administrador");
+            Console.WriteLine("Administrador");
             Console.Write("  [4] ", Color.LightSeaGreen);
             Console.WriteLine("Encerrar programa");
             System.Console.WriteLine();
@@ -45,19 +46,21 @@ namespace ByteBank_2._0
             Console.Write("  [2] ", Color.LightSeaGreen);
             Console.WriteLine("Realizar depósito");
             Console.Write("  [3] ", Color.LightSeaGreen);
-            Console.WriteLine("Realizar saque");
+            Console.WriteLine("Realizar Saque");
             Console.Write("  [4] ", Color.LightSeaGreen);
-            Console.WriteLine("Encerrar conta");
+            Console.WriteLine("Realizar Transferência");
             Console.Write("  [5] ", Color.LightSeaGreen);
+            Console.WriteLine("Encerrar conta");
+            Console.Write("  [6] ", Color.LightSeaGreen);
             Console.WriteLine("Sair");
             Console.WriteLine();
             Console.Write("  Digite a opção selecionada: ");
-            string opcao = InputCheckers.ValidarSelecao("1", "2", "3", "4", "5");
+            string opcao = InputValidation.ValidarSelecao("1", "2", "3", "4", "5", "6");
 
             return opcao;
         }
 
-        static public bool MenuSaldo(Users usuario)
+        static public bool MenuSaldo(Clients usuario)
         {
             Title();
             Console.WriteLine("  Espaço do Cliente - Saldo");
@@ -70,7 +73,7 @@ namespace ByteBank_2._0
             Console.WriteLine("Encerrar atendimento");
             System.Console.WriteLine();
             Console.Write("  Digite a opção selecionada: ");
-            string opcao = InputCheckers.ValidarSelecao("1", "2");
+            string opcao = InputValidation.ValidarSelecao("1", "2");
             if (opcao == "2") { return false; } else return true;
         }
 
@@ -91,19 +94,19 @@ namespace ByteBank_2._0
             Console.WriteLine("Sair");
             Console.WriteLine();
             Console.Write("  Digite a opcao selecionada: ");
-            string opcao = InputCheckers.ValidarSelecao("1", "2", "3", "4", "5");
+            string opcao = InputValidation.ValidarSelecao("1", "2", "3", "4", "5");
 
             return opcao;
         }
 
-        static public bool MenuListaClientes(List<Users> usuarios)
+        static public bool MenuListaClientes(List<Clients> usuarios)
         {
             Title();
             Console.WriteLine("  Espaço do Administrador - Clientes");
             Console.WriteLine();
 
             var table = new ConsoleTables.ConsoleTable("Cliente", "CPF");
-            foreach (Users u in usuarios)
+            foreach (Clients u in usuarios)
             {
                 table.AddRow(u.Nome, u.Cpf);
             }
@@ -114,16 +117,16 @@ namespace ByteBank_2._0
             if (opcao == "2") { return false; } else return true;
         }
 
-        static public bool MenuListaContas(List<Users> usuarios)
+        static public bool MenuListaContas(List<Clients> usuarios)
         {
             Title();
             Console.WriteLine("  Espaço do Administrador - Contas");
             Console.WriteLine();
 
-            var table = new ConsoleTables.ConsoleTable("Cliente", "CPF", "Saldo");
-            foreach (Users u in usuarios)
+            var table = new ConsoleTables.ConsoleTable("Conta", "Cliente", "CPF", "Saldo");
+            foreach (Clients u in usuarios)
             {
-                table.AddRow(u.Nome, u.Cpf, u.Saldo);
+                table.AddRow(u.NumeroConta, u.Nome, u.Cpf, u.Saldo);
             }
             table.Write();
 

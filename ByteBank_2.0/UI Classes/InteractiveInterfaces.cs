@@ -6,39 +6,50 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ByteBank_2._0.Functions;
+using ByteBank_2._0.Models;
 using Console = Colorful.Console;
 
 namespace ByteBank_2._0
 {
     internal class InteractiveInterfaces
     {
-        static public void NovoCliente(List<Users> Clientes)
+        static public void NovoCliente(List<Clients> Clientes)
         {
             MenuInterfaces.Title(); 
             Console.WriteLine("  Cadastro de Contas");
             Console.WriteLine();
             Console.Write("  Nome: ", Color.LightSeaGreen);
-            string Nome = InputCheckers.ValidarNome();
+            string nome = InputValidation.ValidarNome();
 
             Console.Write("  CPF (11 dígitos numéricos): ", Color.LightSeaGreen);
-            string Cpf = InputCheckers.ValidarCpf();
+            string cpf = InputValidation.DigitarCPF();
 
             Console.Write("  Senha (4 dígitos numéricos): ", Color.LightSeaGreen);
-            int senha = InputCheckers.ValidarSenha();
+            int senha = InputValidation.DigitarSenha();
 
-            int IsClient = Clientes.FindIndex(p => p.Cpf == Cpf);
+            int IsClient = Clientes.FindIndex(p => p.Cpf == cpf);
             
             if (IsClient == -1)
             {
-                Users User1 = new Users(Nome, Cpf, senha);
-                Clientes.Add(User1);
-                Utilidades.MensagemNovaConta(Nome);
+                if (Clientes.Count == 0)
+                {
+                    Clients User1 = new Clients(nome, cpf, senha);
+                    Clientes.Add(User1);
+                    Utilidades.MensagemNovaConta(User1.Nome, User1.NumeroConta);
+                }
+                else
+                {
+                    Clients User1 = new Clients(nome, cpf, senha, Clientes.Last().NumeroConta);
+                    Clientes.Add(User1);
+                    Utilidades.MensagemNovaConta(User1.Nome, User1.NumeroConta);
+                }
+                
 
             }
-            else { Utilidades.MensagemContaExistente(); }
+            else { Utilidades.MensagemContaExistente(nome); }
         }
 
-        static public int Acesso(List<Users> Clientes)
+        static public int Acesso(List<Clients> Clientes)
         {
             int index;
             while (true)
@@ -48,31 +59,36 @@ namespace ByteBank_2._0
                 Console.WriteLine();
 
                 Console.Write("  CPF: ", Color.LightSeaGreen);
-                string Cpf = InputCheckers.ValidarCpf();
+                string cpf = InputValidation.DigitarCPF();
+
+                Console.Write("  Conta: ", Color.LightSeaGreen);
+                string conta = InputValidation.DigitarConta();
 
                 Console.Write("  Senha: ", Color.LightSeaGreen);
-                int senha = InputCheckers.ValidarSenha();
+                int senha = InputValidation.DigitarSenha();
 
 
-                int isClient = Clientes.FindIndex(p => p.Cpf == Cpf);
+                bool isClient = Clientes.Exists(p => p.Cpf == cpf);
+                int clientIndex= Clientes.FindIndex(p => p.Cpf == cpf);
 
-                if (isClient == -1)
+
+                if (!isClient)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("  CPF nao cadastrado ou senha incorreta.");
+                    Console.WriteLine("  Informações inválidas. Por favor, tente novamente.");
                     string opcao = Utilidades.MensagemMenuErro("Menu Inicial");
-                    if (opcao == "2") { return isClient; }
+                    if (opcao == "2") { return -1; }
                 }
-                else if (senha != Clientes[isClient].Senha)
+                else if (senha != Clientes[clientIndex].Senha || conta != Clientes[clientIndex].NumeroConta)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("  CPF nao cadastrado ou senha incorreta");
+                    Console.WriteLine("  Informações inválidas. Por favor, tente novamente.");
                     string opcao = Utilidades.MensagemMenuErro("Menu Inicial");
-                    if (opcao == "2") { return isClient; }
+                    if (opcao == "2") { return -1; }
                 }
                 else
                 {
-                    index = isClient;
+                    index = clientIndex;
                     break;
                 }
 
@@ -80,13 +96,19 @@ namespace ByteBank_2._0
             return index;
         }
 
-        static public bool MenuDeposito(Users usuario)
+        static public bool MenuDeposito(Clients usuario)
         {
             MenuInterfaces.Title();
             Console.WriteLine("  Espaço do Cliente - Depósito");
             Console.WriteLine();
+
+            Console.Write("  Conta: ", Color.LightSeaGreen);
+            Console.WriteLine($"{usuario.NumeroConta}");
+            usuario.MostrarSaldo();
+            Console.WriteLine();
+
             Console.Write("  Valor (R$): ", Color.LightSeaGreen);
-            decimal valor = InputCheckers.ValidarDecimal();
+            decimal valor = InputValidation.ValidarDecimal();
             usuario.Depositar(valor);
             Console.WriteLine();
             Console.WriteLine("  Deposito realizado com sucesso!");
@@ -95,7 +117,7 @@ namespace ByteBank_2._0
             if (opcao == "2") { return false; } else return true;
         }
 
-        static public bool MenuSaque(Users usuario)
+        static public bool MenuSaque(Clients usuario)
         {
             bool verificadorSaldo = true;
             decimal valor = 0;
@@ -105,10 +127,12 @@ namespace ByteBank_2._0
                 MenuInterfaces.Title();
                 Console.WriteLine("  Espaço do Cliente - Saque");
                 Console.WriteLine();
+                Console.Write("  Conta: ", Color.LightSeaGreen);
+                Console.WriteLine($"{usuario.NumeroConta}");
                 usuario.MostrarSaldo();
                 Console.WriteLine();
                 Console.Write("  Valor (R$): ", Color.LightSeaGreen);
-                valor = InputCheckers.ValidarDecimal();
+                valor = InputValidation.ValidarDecimal();
                 if (usuario.Saldo < valor)
                 {
                     Console.WriteLine();
@@ -127,7 +151,83 @@ namespace ByteBank_2._0
             if (opcao == "2") { return false; } else return true;
         }
 
-        static public bool ExclusaoDeConta(List<Users> Clientes , int Index)
+        static public bool MenuTransferencia(Clients usuario, List<Clients> clientes)
+        {
+            bool verificadorSaldo = true;
+            decimal valor = 0;
+            int clientIndex = 0;
+
+            while (verificadorSaldo)
+            {
+                MenuInterfaces.Title();
+                Console.WriteLine("  Espaço do Cliente - Transferência");
+                Console.WriteLine();
+                Console.Write("  Conta: ", Color.LightSeaGreen);
+                Console.WriteLine($"{usuario.NumeroConta}");
+                usuario.MostrarSaldo();
+
+               while (true)
+                {
+                    Console.WriteLine();
+                    Console.Write("  Conta Destino: ", Color.LightSeaGreen);
+                    string conta = InputValidation.DigitarConta();
+
+                    bool isClient = clientes.Exists(p => p.NumeroConta == conta);
+                    clientIndex = clientes.FindIndex(p => p.NumeroConta == conta);
+
+
+                    if (!isClient)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("  Conta não encontrada.");
+                        string opcaoConta = Utilidades.MensagemMenuErro("Espaço do Cliente");
+                        if (opcaoConta == "2") { return true; }
+                    }
+                    else { break; }
+                }
+
+                Console.WriteLine();
+                Console.Write("  Valor (R$): ", Color.LightSeaGreen);
+                
+                valor = InputValidation.ValidarDecimal();
+                if (usuario.Saldo < valor)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("  Saldo insuficiente. Por favor, selecione outro valor.");
+                    string opcaoSaldo = Utilidades.MensagemMenuErro("Espaço do Cliente");
+                    if (opcaoSaldo == "2") { return true; };
+                }
+                else { verificadorSaldo = false; }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("  Tem certeza que deseja realizar essa transferência?");
+            Console.WriteLine();
+            Console.Write("  [1] ", Color.LightSeaGreen);
+            Console.WriteLine("Sim");
+            Console.Write("  [2] ", Color.LightSeaGreen);
+            Console.WriteLine("Nao");
+            Console.WriteLine();
+            Console.Write("  Digite a opcao selecionada: ");
+            string opcaoTransferencia = InputValidation.ValidarSelecao("1", "2");
+            if (opcaoTransferencia == "1")
+            {
+                usuario.Sacar(valor);
+                clientes[clientIndex].Depositar(valor);
+                Console.WriteLine();
+                Console.WriteLine("  Transferência realizada com sucesso!");
+                usuario.MostrarSaldo();
+                string opcao = Utilidades.MensagemRetornarMenu("Espaço do Cliente");
+                if (opcao == "2") { return false; } else return true;
+
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        static public bool ExclusaoDeConta(List<Clients> Clientes , int Index)
         {
             bool excluir = false;
             
@@ -138,10 +238,10 @@ namespace ByteBank_2._0
                 Console.WriteLine();
 
                 Console.Write("  CPF: ", Color.LightSeaGreen);
-                string Cpf = InputCheckers.ValidarCpf();
+                string Cpf = InputValidation.DigitarCPF();
 
                 Console.Write("  Senha: ", Color.LightSeaGreen);
-                int senha = InputCheckers.ValidarSenha();
+                int senha = InputValidation.DigitarSenha();
 
                 if (Cpf == Clientes[Index].Cpf && senha == Clientes[Index].Senha)
                 {
@@ -156,7 +256,7 @@ namespace ByteBank_2._0
                         Console.WriteLine("Nao");
                         Console.WriteLine();
                         Console.Write("  Digite a opcao selecionada: ");
-                        string opcao = InputCheckers.ValidarSelecao("1", "2");
+                        string opcao = InputValidation.ValidarSelecao("1", "2");
                         if (opcao == "1")
                         {
                             excluir = true;
@@ -209,10 +309,10 @@ namespace ByteBank_2._0
                 Console.WriteLine("  Acesso - Espaço do Administrador");
                 Console.WriteLine();
                 Console.Write("  Nome de usuario: ", Color.LightSeaGreen);
-                string Nome = InputCheckers.ValidarNome();
+                string Nome = InputValidation.ValidarNome();
 
                 Console.Write("  Senha: ", Color.LightSeaGreen);
-                int senha = InputCheckers.ValidarSenha();
+                int senha = InputValidation.DigitarSenha();
 
                 if (aAdmin.NomeDeUsuario == Nome && aAdmin.Senha == senha)
                 {
@@ -229,13 +329,13 @@ namespace ByteBank_2._0
                     Console.WriteLine("Retorne ao Menu Inicial");
                     Console.WriteLine();
                     Console.Write("  Digite a opcao selecionada: ");
-                    string opcao = InputCheckers.ValidarSelecao("1", "2");
+                    string opcao = InputValidation.ValidarSelecao("1", "2");
                     if (opcao == "2") { return false; }
                 }
             }
         }
 
-        static public bool ExclusaoDeContaAdm(List<Users> Clientes, Admin admin)
+        static public bool ExclusaoDeContaAdm(List<Clients> Clientes, Admin admin)
         {
             bool excluir;
             int index;
@@ -246,10 +346,14 @@ namespace ByteBank_2._0
                 Console.WriteLine("  Espaço do Administrador - Encerrar Conta");
                 Console.WriteLine();
 
+                Console.Write("  Nº Conta: ", Color.LightSeaGreen);
+                string conta = InputValidation.DigitarConta();
+                
                 Console.Write("  CPF do titular: ", Color.LightSeaGreen);
-                string Cpf = InputCheckers.ValidarCpf();
+                string Cpf = InputValidation.DigitarCPF();
 
                 index = Clientes.FindIndex(p => p.Cpf == Cpf);
+                
                 if (index == -1)
                 {
                     Console.WriteLine();
@@ -258,10 +362,17 @@ namespace ByteBank_2._0
                     if (opcao == "2") { return true; }
 
                 }
+                else if(Clientes[index].NumeroConta != conta)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("  Número de conta inválido.");
+                    string opcao = Utilidades.MensagemMenuErro("Espaço do Administrador");
+                    if (opcao == "2") { return true; }
+                }
                 else
                 {
                     Console.Write("  Senha Administrador: ", Color.LightSeaGreen);
-                    int senha = InputCheckers.ValidarSenha();
+                    int senha = InputValidation.DigitarSenha();
 
                     if (senha == admin.Senha)
                     {
@@ -274,7 +385,7 @@ namespace ByteBank_2._0
                         Console.WriteLine("Nao");
                         Console.WriteLine();
                         Console.Write("  Digite a opcao selecionada: ");
-                        string opcao = InputCheckers.ValidarSelecao("1", "2");
+                        string opcao = InputValidation.ValidarSelecao("1", "2");
                         if (opcao == "1") { 
                             excluir = true;
                             break;
@@ -305,7 +416,7 @@ namespace ByteBank_2._0
             return true;
         }
 
-        static public void AlterarSenhaAdm(List<Users> usuarios, Admin admin)
+        static public void AlterarSenhaAdm(List<Clients> usuarios, Admin admin)
         {
             while (true)
             {
@@ -313,8 +424,11 @@ namespace ByteBank_2._0
                 Console.WriteLine("  Espaço do Administrador - Alterar Senhas");
                 Console.WriteLine();
 
+                Console.Write("  Nº Conta: ", Color.LightSeaGreen);
+                string conta = InputValidation.DigitarConta();
+
                 Console.Write("  CPF do titular: ", Color.LightSeaGreen);
-                string Cpf = InputCheckers.ValidarCpf();
+                string Cpf = InputValidation.DigitarCPF();
 
                 int index = usuarios.FindIndex(p => p.Cpf == Cpf);
                 if (index == -1)
@@ -325,15 +439,22 @@ namespace ByteBank_2._0
                     if (opcao == "2") break;
 
                 }
+                else if(conta != usuarios[index].NumeroConta)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("  Número de conta inválido.");
+                    string opcao = Utilidades.MensagemMenuErro("Espaço do Administrador");
+                    if (opcao == "2") break;
+                }
                 else
                 {
                     Console.WriteLine();
                     Console.Write("  Nova Senha (4 dígitos numéricos): ", Color.LightSeaGreen);
-                    int senha = InputCheckers.ValidarSenha();
+                    int senha = InputValidation.DigitarSenha();
 
                     Console.WriteLine();
                     Console.Write("  Senha Administrador: ", Color.LightSeaGreen);
-                    int senhaAdm = InputCheckers.ValidarSenha();
+                    int senhaAdm = InputValidation.DigitarSenha();
 
                     if (senhaAdm == admin.Senha)
                     {
@@ -346,7 +467,7 @@ namespace ByteBank_2._0
                         Console.WriteLine("Nao");
                         Console.WriteLine();
                         Console.Write("  Digite a opção selecionada: ");
-                        string opcao = InputCheckers.ValidarSelecao("1", "2");
+                        string opcao = InputValidation.ValidarSelecao("1", "2");
                         if (opcao == "2") { return; }
                         else
                         {
