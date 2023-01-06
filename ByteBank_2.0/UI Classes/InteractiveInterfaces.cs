@@ -200,8 +200,18 @@ namespace ByteBank_2._0
                 else { verificadorSaldo = false; }
             }
 
+            MenuInterfaces.Title();
+            Console.WriteLine("  Espaço do Cliente - Transferência");
             Console.WriteLine();
-            Console.WriteLine("  Tem certeza que deseja realizar essa transferência?");
+            Console.WriteLine("  Dados da transferência", Color.LightSeaGreen);
+            Console.Write("  Nome: ", Color.LightSeaGreen);
+            Console.WriteLine($"{clientes[clientIndex].Nome}");
+            Console.Write("  CPF: ", Color.LightSeaGreen);
+            Console.WriteLine($"******{clientes[clientIndex].Cpf.Substring(6)}");
+            Console.Write("  Valor (R$): ", Color.LightSeaGreen);
+            Console.WriteLine($"{valor}");
+            Console.WriteLine();
+            Console.WriteLine("  Confirmar transferência?");
             Console.WriteLine();
             Console.Write("  [1] ", Color.LightSeaGreen);
             Console.WriteLine("Sim");

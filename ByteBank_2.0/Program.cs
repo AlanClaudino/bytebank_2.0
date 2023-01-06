@@ -9,6 +9,7 @@ namespace ByteBank_2._0
     {
         static void Main(string[] args)
         {
+            System.Console.Title = "ByteBank 2.0";
             Console.ForegroundColor = Color.PaleGoldenrod;
             List<Clients> clientes = InputOutput.GetClientsDB();
             Admin admin = new Admin("Alan", "admin", 9999);

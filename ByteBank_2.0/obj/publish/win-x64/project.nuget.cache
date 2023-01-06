@@ -1,0 +1,142 @@
+{
+  "version": 2,
+  "dgSpecHash": "Kbrr67wjcGth4GTvvv3rvZxdm8THaN/kYbb93sC9pdmfQM412wgSugv0q03bwQDY7lJ4qY9HB/a0NryX9gk5pg==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\alanr\\Desktop\\Alan\\Projects\\Computer Science\\Ima LP\\ByteBank\\ByteBank_2.0\\ByteBank_2.0\\ByteBank_2.0.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alanr\\.nuget\\packages\\colorful.console\\1.2.15\\colorful.console.1.2.15.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.collections\\4.3.0\\runtime.any.system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.diagnostics.tracing\\4.3.0\\runtime.any.system.diagnostics.tracing.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.globalization\\4.3.0\\runtime.any.system.globalization.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.io\\4.3.0\\runtime.any.system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.reflection\\4.3.0\\runtime.any.system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.reflection.extensions\\4.3.0\\runtime.any.system.reflection.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.reflection.primitives\\4.3.0\\runtime.any.system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.resources.resourcemanager\\4.3.0\\runtime.any.system.resources.resourcemanager.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.runtime\\4.3.0\\runtime.any.system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.runtime.handles\\4.3.0\\runtime.any.system.runtime.handles.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.runtime.interopservices\\4.3.0\\runtime.any.system.runtime.interopservices.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.text.encoding\\4.3.0\\runtime.any.system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.text.encoding.extensions\\4.3.0\\runtime.any.system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.any.system.threading.tasks\\4.3.0\\runtime.any.system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.win.system.console\\4.3.0\\runtime.win.system.console.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.win.system.diagnostics.debug\\4.3.0\\runtime.win.system.diagnostics.debug.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.win.system.io.filesystem\\4.3.0\\runtime.win.system.io.filesystem.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\runtime.win.system.runtime.extensions\\4.3.0\\runtime.win.system.runtime.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.collections.concurrent\\4.0.12\\system.collections.concurrent.4.0.12.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.console\\4.0.0\\system.console.4.0.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.diagnostics.tracing\\4.1.0\\system.diagnostics.tracing.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.globalization\\4.0.11\\system.globalization.4.0.11.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.io.filesystem\\4.0.1\\system.io.filesystem.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.private.uri\\4.3.0\\system.private.uri.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.0.1\\system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.emit.lightweight\\4.0.1\\system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.extensions\\4.0.1\\system.reflection.extensions.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.resources.resourcemanager\\4.0.1\\system.resources.resourcemanager.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.runtime.extensions\\4.1.0\\system.runtime.extensions.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.runtime.handles\\4.0.1\\system.runtime.handles.4.0.1.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.runtime.interopservices\\4.1.0\\system.runtime.interopservices.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.threading.overlapped\\4.3.0\\system.threading.overlapped.4.3.0.nupkg.sha512",
+    "C:\\Users\\alanr\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Runtime.InteropServices from 4.3.0 to 4.1.0. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Console 4.0.0 -> runtime.win.System.Console 4.3.0 -> System.Runtime.InteropServices (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Runtime.InteropServices (>= 4.1.0)",
+      "libraryId": "System.Runtime.InteropServices",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Collections from 4.3.0 to 4.0.11. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Collections (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Collections (>= 4.0.11)",
+      "libraryId": "System.Collections",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Diagnostics.Debug from 4.3.0 to 4.0.11. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Diagnostics.Debug (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Diagnostics.Debug (>= 4.0.11)",
+      "libraryId": "System.Diagnostics.Debug",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Runtime.Extensions from 4.3.0 to 4.1.0. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Runtime.Extensions (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Runtime.Extensions (>= 4.1.0)",
+      "libraryId": "System.Runtime.Extensions",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Runtime.Handles from 4.3.0 to 4.0.1. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Runtime.Handles (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> System.Runtime.Handles (>= 4.0.1)",
+      "libraryId": "System.Runtime.Handles",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Runtime.InteropServices from 4.3.0 to 4.1.0. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Runtime.InteropServices (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Runtime.InteropServices (>= 4.1.0)",
+      "libraryId": "System.Runtime.InteropServices",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Globalization from 4.3.0 to 4.0.11. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Console 4.0.0 -> runtime.win.System.Console 4.3.0 -> System.Resources.ResourceManager 4.3.0 -> System.Globalization (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Globalization (>= 4.0.11)",
+      "libraryId": "System.Globalization",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Globalization from 4.3.0 to 4.0.11. Reference the package directly from the project to select a different version. \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.IO.FileSystem 4.0.1 -> runtime.win.System.IO.FileSystem 4.3.0 -> System.Resources.ResourceManager 4.3.0 -> System.Globalization (>= 4.3.0) \r\n ByteBank_2.0 -> Colorful.Console 1.2.15 -> System.Globalization (>= 4.0.11)",
+      "libraryId": "System.Globalization",
+      "targetGraphs": [
+        "net6.0/win-x64"
+      ]
+    }
+  ]
+}
