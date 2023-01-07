@@ -1,6 +1,6 @@
 # bytebank_2.0
 ## Introdução
-Esse projeto foi desenvolvido para o curso de formação de desenvolvedores Sharp Coders, promovido pela Imã Leaarning Place. Ele simula um sistema bancário e implementa duas interfaces, uma para os clientes e outra para administradores. De maneira geral, ele permite a abertura de contas, a realização de transações bancárias e, para a interface de administradores, o gerenciamento de contas e clientes.
+Esse projeto foi desenvolvido para o curso de formação de desenvolvedores Sharp Coders, promovido pela Imã Learning Place. Ele simula um sistema bancário e implementa duas interfaces, uma para os clientes e outra para administradores. De maneira geral, ele permite a abertura de contas, a realização de transações bancárias e, para a interface de administradores, o gerenciamento de contas e clientes.
 
 ## Interface para Clientes
 Na interface para clientes, as seguintes funcionalidades foram implementadas:
